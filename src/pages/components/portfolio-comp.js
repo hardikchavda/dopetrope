@@ -3,29 +3,34 @@ import PostPortComponent from "./post-portfolio-comp";
 
 class Portfolio extends Component {
 
+    state = {
+        posts: []
+    };
+
+    componentDidMount() {
+        fetch("https://jsonplaceholder.typicode.com/posts?_page=1")
+            .then(res => res.json())
+            .then(data => this.setState({ posts: data }));
+    }
 
     render() {
-        const myArray = ['Hardik', 'Pranav', 'Malay'];
+        const postItems = this.state.posts.map(post => (
+            <PostPortComponent
+                key={post.id}
+                title={post.title}
+                image={`https://picsum.photos/id/${post.id}/300/200`}
+                description={post.body}
+            />
+        ));
         return (
             <section>
                 <header className="major">
                     <h2>My Portfolio</h2>
                 </header>
                 <div className="row">
-                    <PostPortComponent
-                        title="Hardik"
-                        image="https://picsum.photos/id/1/300/200"
-                        alternate=""
-                    />
-                    <PostPortComponent
-                        title="Pranav"
-                        image="https://picsum.photos/id/2/300/200"
-                    />
-                    <PostPortComponent
-                        title="Malay"
-                        image="https://picsum.photos/id/3/300/200"
-                    />
+                    {postItems}
                 </div>
+
             </section>
         )
     }

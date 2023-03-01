@@ -9,7 +9,7 @@ class PostPortComponent extends Component {
                     <header>
                         <h3>{this.props.title}</h3>
                     </header>
-                    <p>Lorem ipsum dolor sit amet sit veroeros sed amet blandit consequat veroeros lorem blandit adipiscing et feugiat phasellus tempus dolore ipsum lorem dolore.</p>
+                    <p>{this.props.description}</p>
                     <footer>
                         <ul className="actions">
                             <li><a href="#" className="button alt">Find out more</a></li>
