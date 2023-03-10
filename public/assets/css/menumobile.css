@@ -1,0 +1,92 @@
+.menu {
+    /* width: 40px;
+    height: 40px;
+    display: block; */
+    position: fixed;
+    z-index: 1;
+}
+
+.list,
+.intro {
+    height: 100%;
+    top: 0;
+    z-index: -1;
+    display: flex;
+    position: fixed;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.75s ease;
+}
+
+.list {
+    background: #251906;
+    width: 120px;
+    left: -120px;
+    opacity: 0;
+}
+
+.list span {
+    background: #fff;
+    width: 100px;
+    margin: 5px 0;
+    padding: 10px 0;
+    text-align: center;
+    border-radius: 4px;
+}
+
+.intro {
+    width: 100%;
+    padding: 0 8px;
+    left: 0;
+    text-align: center;
+}
+
+.mnbtn {
+    background: #000;
+    width: 40px;
+    height: 40px;
+    top: 10px;
+    left: 10px;
+    display: block;
+    position: absolute;
+    border-radius: 50%;
+}
+
+.mnbtn::before,
+.mnbtn::after {
+    background: #fff;
+    width: 20px;
+    height: 2px;
+    left: 10px;
+    display: block;
+    position: absolute;
+    transition: all 0.75s ease;
+    content: "";
+}
+
+.mnbtn::before {
+    top: 16px;
+}
+
+.mnbtn::after {
+    bottom: 16px;
+}
+
+.menu:focus-within .list {
+    left: 0;
+    opacity: 1;
+}
+
+.menu:focus-within .intro {
+    width: calc(100% - 120px);
+    left: 120px;
+}
+
+.menu:focus-within .mnbtn::before {
+    transform: rotate(45deg) translate(2px, 2px);
+}
+
+.menu:focus-within .mnbtn::after {
+    transform: rotate(-45deg) translate(2px, -2px);
+}

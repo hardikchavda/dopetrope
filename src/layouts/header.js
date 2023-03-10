@@ -1,5 +1,6 @@
 import { Component } from "react";
 import { Link, NavLink } from "react-router-dom"
+import { MobileMenu } from "./mobileMenu";
 
 class Header extends Component {
 
@@ -11,6 +12,7 @@ class Header extends Component {
         return (
             <section id="header" >
                 <h1><Link to="/">Dopetrope</Link></h1>
+                
                 <nav id="nav">
                     <ul>
                         <li><NavLink to="/" style={this.style} >Home</NavLink></li>
@@ -40,7 +42,7 @@ class Header extends Component {
                 </nav>
 
 
-                
+
             </section >
         )
     }
