@@ -1,69 +1,83 @@
-function Contact() {
+import { Component } from "react"
 
-    return (
-        <section id="main">
-            <div className="container">
+class Contact extends Component {
 
-                {/* <!-- Content --> */}
-                <article className="box post">
-                    <a href="#" className="image featured"><img src="images/pic01.jpg" alt="" /></a>
-                    <header>
-                        <h2>Contact</h2>
-                        <p>Lorem ipsum dolor sit amet feugiat</p>
-                    </header>
-                    <p>
-                        Vestibulum scelerisque ultricies libero id hendrerit. Vivamus malesuada quam faucibus ante dignissim auctor
-                        hendrerit libero placerat. Nulla facilisi. Proin aliquam felis non arcu molestie at accumsan turpis commodo.
-                        Proin elementum, nibh non egestas sodales, augue quam aliquet est, id egestas diam justo adipiscing ante.
-                        Pellentesque tempus nulla non urna eleifend ut ultrices nisi faucibus.
-                        Vestibulum scelerisque ultricies libero id hendrerit. Vivamus malesuada quam faucibus ante dignissim auctor
-                        hendrerit libero placerat. Nulla facilisi. Proin aliquam felis non arcu molestie at accumsan turpis commodo.
-                        Proin elementum, nibh non egestas sodales, augue quam aliquet est, id egestas diam justo adipiscing ante.
-                    </p>
-                    <form >
-                        <input type="text" className="form-control" />
-                        <input type="text" className="form-control" />
-                        <input type="button" value="Send" />
-                    </form>
-                    <section>
+    constructor(props) {
+        super(props);
+        this.state = {
+            name: '',
+            email: '',
+            message: ''
+        }
+    }
+    handleSubmit(e) {
+        e.preventDefault();
+        //     fetch('http://localhost:3002/send', {
+        //         method: "POST",
+        //         body: JSON.stringify(this.state),
+        //         headers: {
+        //           'Accept': 'application/json',
+        //           'Content-Type': 'application/json'
+        //         },
+        //       }).then(
+        //       (response) => (response.json())
+        //         ).then((response)=> {
+        //       if (response.status === 'success') {
+        //         alert("Message Sent.");
+        //         this.resetForm()
+        //       } else if(response.status === 'fail') {
+        //         alert("Message failed to send.")
+        //       }
+        //     })
+    }
+    resetForm() {
+        this.setState({ name: '', email: '', message: '' })
+    }
+    onNameChange(event) {
+        this.setState({ name: event.target.value })
+    }
+    onEmailChange(event) {
+        this.setState({ email: event.target.value })
+    }
+    onMessageChange(event) {
+        this.setState({ message: event.target.value })
+    }
+    render() {
+
+        return (
+            <section id="main">
+                <div className="container">
+
+                    {/* <!-- Content --> */}
+                    <article className="box post">
+                        <a href="#" className="image featured"><img src="images/pic01.jpg" alt="" /></a>
                         <header>
-                            <h3>Something else</h3>
+                            <h2>Contact</h2>
+                            <p>Become one of us</p>
                         </header>
-                        <p>
-                            Elementum odio duis semper risus et lectus commodo fringilla. Maecenas sagittis convallis justo vel mattis.
-                            placerat, nunc diam iaculis massa, et aliquet nibh leo non nisl vitae porta lobortis, enim neque fringilla nunc,
-                            eget faucibus lacus sem quis nunc suspendisse nec lectus sit amet augue rutrum vulputate ut ut mi. Aenean
-                            elementum, mi sit amet porttitor lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor
-                            sit amet nullam consequat feugiat dolore tempus.
-                            Elementum odio duis semper risus et lectus commodo fringilla. Maecenas sagittis convallis justo vel mattis.
-                            placerat, nunc diam iaculis massa, et aliquet nibh leo non nisl vitae porta lobortis, enim neque fringilla nunc,
-                            eget faucibus lacus sem quis nunc suspendisse nec lectus sit amet augue rutrum vulputate ut ut mi. Aenean
-                            elementum, mi sit amet porttitor lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor.
-                        </p>
-                        <p>
-                            Nunc diam iaculis massa, et aliquet nibh leo non nisl vitae porta lobortis, enim neque fringilla nunc,
-                            eget faucibus lacus sem quis nunc suspendisse nec lectus sit amet augue rutrum vulputate ut ut mi. Aenean
-                            elementum, mi sit amet porttitor lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor
-                            sit amet nullam consequat feugiat dolore tempus.
-                        </p>
-                    </section>
-                    <section>
-                        <header>
-                            <h3>So in conclusion ...</h3>
-                        </header>
-                        <p>
-                            Nunc diam iaculis massa, et aliquet nibh leo non nisl vitae porta lobortis, enim neque fringilla nunc,
-                            eget faucibus lacus sem quis nunc suspendisse nec lectus sit amet augue rutrum vulputate ut ut mi. Aenean
-                            elementum, mi sit amet porttitor lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor
-                            sit amet nullam consequat feugiat dolore tempus. Elementum odio duis semper risus et lectus commodo fringilla.
-                            Maecenas sagittis convallis justo vel mattis.
-                        </p>
-                    </section>
-                </article>
+                        <form id="contact-form" onSubmit={this.handleSubmit.bind(this)} method="POST">
+                            <div className="form-group">
+                                <label htmlFor="name">Name</label>
+                                <input type="text" className="form-control" id="name" value={this.state.name} onChange={this.onNameChange.bind(this)} />
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="exampleInputEmail1">Email address</label>
+                                <input type="email" className="form-control" id="email" aria-describedby="emailHelp" value={this.state.email} onChange={this.onEmailChange.bind(this)} />
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="message">Message</label>
+                                <textarea className="form-control" rows="5" id="message" value={this.state.message} onChange={this.onMessageChange.bind(this)} />
+                            </div>
+                            <button type="submit" className="btn btn-primary">Submit</button>
+                        </form>
 
-            </div>
-        </section>
-    )
+
+                    </article>
+
+                </div>
+            </section>
+        )
+    }
 }
 
 export default Contact
