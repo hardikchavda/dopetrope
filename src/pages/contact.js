@@ -9,26 +9,35 @@ class Contact extends Component {
             email: '',
             message: ''
         }
+        this.form = this.handleSubmit.bind(this)
+        this.name = this.onNameChange.bind(this)
+        this.email = this.onEmailChange.bind(this)
+        this.message = this.onMessageChange.bind(this)
+
     }
     handleSubmit(e) {
         e.preventDefault();
-        //     fetch('http://localhost:3002/send', {
-        //         method: "POST",
-        //         body: JSON.stringify(this.state),
-        //         headers: {
-        //           'Accept': 'application/json',
-        //           'Content-Type': 'application/json'
-        //         },
-        //       }).then(
-        //       (response) => (response.json())
-        //         ).then((response)=> {
-        //       if (response.status === 'success') {
-        //         alert("Message Sent.");
-        //         this.resetForm()
-        //       } else if(response.status === 'fail') {
-        //         alert("Message failed to send.")
-        //       }
-        //     })
+        fetch('https://hardikchavda.in/webservices/contact.php', {
+            mode: 'no-cors',
+            method: "POST",
+            // body: this.state,
+            body: JSON.stringify(this.state),
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+        })
+            .then((response) => response.json())
+            .then((response) => {
+                console.log(response)
+                if (response.status === '1') {
+                    console.log("Message Sent.")
+                    this.resetForm()
+                } else if (response.status === '0') {
+                    console.log("Message failed to send.")
+                }
+            });
+        // console.log(this.state)
     }
     resetForm() {
         this.setState({ name: '', email: '', message: '' })
@@ -42,8 +51,9 @@ class Contact extends Component {
     onMessageChange(event) {
         this.setState({ message: event.target.value })
     }
-    render() {
 
+    render() {
+        const { name, email, message } = this.state
         return (
             <section id="main">
                 <div className="container">
@@ -55,18 +65,18 @@ class Contact extends Component {
                             <h2>Contact</h2>
                             <p>Become one of us</p>
                         </header>
-                        <form id="contact-form" onSubmit={this.handleSubmit.bind(this)} method="POST">
+                        <form id="contact-form" onSubmit={this.form} method="POST">
                             <div className="form-group">
                                 <label htmlFor="name">Name</label>
-                                <input type="text" className="form-control" id="name" value={this.state.name} onChange={this.onNameChange.bind(this)} />
+                                <input type="text" className="form-control" id="name" value={name} onChange={this.name} />
                             </div>
                             <div className="form-group">
                                 <label htmlFor="exampleInputEmail1">Email address</label>
-                                <input type="email" className="form-control" id="email" aria-describedby="emailHelp" value={this.state.email} onChange={this.onEmailChange.bind(this)} />
+                                <input type="email" className="form-control" id="email" aria-describedby="emailHelp" value={email} onChange={this.email} />
                             </div>
                             <div className="form-group">
                                 <label htmlFor="message">Message</label>
-                                <textarea className="form-control" rows="5" id="message" value={this.state.message} onChange={this.onMessageChange.bind(this)} />
+                                <textarea className="form-control" rows="5" id="message" value={message} onChange={this.message} />
                             </div>
                             <button type="submit" className="btn btn-primary">Submit</button>
                         </form>
