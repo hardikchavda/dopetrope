@@ -1,3 +1,4 @@
+import axios from "axios";
 import { Component } from "react"
 
 class Contact extends Component {
@@ -17,24 +18,28 @@ class Contact extends Component {
     }
     handleSubmit(e) {
         e.preventDefault()
-        fetch('https://hardikchavda.in/webservices/contact.php', {            
-            method: 'POST',
-            body: JSON.stringify(this.state),
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-            },
-        })
-            .then((response) => response.json())
-            .then((response) => {
-                console.log(response)
-                if (response.status === '1') {
-                    console.log("Message Sent.")
-                    this.resetForm()
-                } else if (response.status === '0') {
-                    console.log("Message failed to send.")
-                }
-            });
+        axios.post('https://hardikchavda.in/webservices/contact.php', this.state)
+            .then(res => {
+                console.log(res);
+            })
+        // fetch('https://hardikchavda.in/webservices/contact.php', {            
+        //     method: 'POST',
+        //     body: JSON.stringify(this.state),
+        //     headers: {
+        //         'Accept': 'application/json',
+        //         'Content-Type': 'application/json',
+        //     },
+        // })
+        //     .then((response) => response.json())
+        //     .then((response) => {
+        //         console.log(response)
+        //         if (response.status === '1') {
+        //             console.log("Message Sent.")
+        //             this.resetForm()
+        //         } else if (response.status === '0') {
+        //             console.log("Message failed to send.")
+        //         }
+        //     });
         // console.log(JSON.stringify(this.state))
     }
     resetForm() {
