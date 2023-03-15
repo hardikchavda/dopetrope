@@ -18,12 +18,15 @@ class Contact extends Component {
     handleSubmit(e) {
         e.preventDefault();
         fetch('https://hardikchavda.in/webservices/contact.php', {
+            // mode: 'no-cors',
             method: "POST",
             body: JSON.stringify(this.state),
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
-                // 'Access-Control-Allow-Origin': '*'
+                'Access-Control-Allow-Credentials': 'true',
+                'Access-Control-Allow-Methods': 'GET,HEAD,OPTIONS,POST,PUT',
+                'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept, Authorization'
             },
         })
             .then((response) => response.json())
