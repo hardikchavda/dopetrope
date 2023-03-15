@@ -18,7 +18,7 @@ class Contact extends Component {
     }
     handleSubmit(e) {
         e.preventDefault()
-        axios.post('https://hardikchavda.in/webservices/contact.php', this.state)
+        axios.post('https://hardikchavda.in/webservices/contact.php', JSON.stringify(this.state))
             .then(res => {
                 console.log(res);
             })
