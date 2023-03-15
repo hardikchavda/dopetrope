@@ -8,8 +8,10 @@ class Contact extends Component {
         this.state = {
             name: '',
             email: '',
-            message: ''
+            message: '',
+            res_message: ''
         }
+
         this.form = this.handleSubmit.bind(this)
         this.name = this.onNameChange.bind(this)
         this.email = this.onEmailChange.bind(this)
@@ -20,7 +22,15 @@ class Contact extends Component {
         e.preventDefault()
         axios.post('https://hardikchavda.in/webservices/contact.php', JSON.stringify(this.state))
             .then(res => {
-                console.log(res);
+                // console.log(res.data.status);
+                if (res.data.status == "empty") {
+                    // console.log("One or More field is empty.");
+                    this.setState({ res_message: <h4 style={{ color: "red" }}>One or More field is empty.</h4> });
+                } else if (res.data.status == "success") {
+                    this.setState({ res_message: <h4 style={{ color: "green" }}>Data Submitted Successfully.</h4> });
+                } else if (res.data.status == "fail") {
+                    this.setState({ res_message: <h4 style={{ color: "red" }}>Data has some errors.</h4> });
+                }
             })
         // fetch('https://hardikchavda.in/webservices/contact.php', {            
         //     method: 'POST',
@@ -69,6 +79,7 @@ class Contact extends Component {
                             <p>Become one of us</p>
                         </header>
                         <form id="contact-form" onSubmit={this.form} method="POST">
+
                             <div className="form-group">
                                 <label htmlFor="name">Name</label>
                                 <input type="text" className="form-control" id="name" value={name} onChange={this.name} />
@@ -82,11 +93,9 @@ class Contact extends Component {
                                 <textarea className="form-control" rows="5" id="message" value={message} onChange={this.message} />
                             </div>
                             <button type="submit" className="btn btn-primary">Submit</button>
+                            {this.state.res_message}
                         </form>
-
-
                     </article>
-
                 </div>
             </section>
         )
