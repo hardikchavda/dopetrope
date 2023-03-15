@@ -1,3 +1,4 @@
+import axios from "axios";
 import { Component } from "react";
 import PostPortComponent from "./post-portfolio-comp";
 
@@ -8,9 +9,13 @@ class Portfolio extends Component {
     };
 
     componentDidMount() {
-        fetch("https://jsonplaceholder.typicode.com/posts?_page=1")
-            .then(res => res.json())
-            .then(data => this.setState({ posts: data }));
+        // fetch("https://jsonplaceholder.typicode.com/posts?_page=1")
+        //     .then(res => res.json())
+        //     .then(data => this.setState({ posts: data }));
+
+        axios.get('https://jsonplaceholder.typicode.com/posts?_page=1')
+            .then(res => res.data)
+            .then(data => this.setState({ posts: data }))                    
     }
 
     render() {
