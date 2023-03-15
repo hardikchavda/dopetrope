@@ -18,9 +18,7 @@ class Contact extends Component {
     handleSubmit(e) {
         e.preventDefault();
         fetch('https://hardikchavda.in/webservices/contact.php', {
-            // mode: 'no-cors',
             method: "POST",
-            // body: this.state,
             body: JSON.stringify(this.state),
             headers: {
                 'Accept': 'application/json',
@@ -28,7 +26,7 @@ class Contact extends Component {
                 'Access-Control-Allow-Origin': '*'
             },
         })
-            // .then((response) => response.json())
+            .then((response) => response.json())
             .then((response) => {
                 console.log(response)
                 if (response.status === '1') {
@@ -38,7 +36,7 @@ class Contact extends Component {
                     console.log("Message failed to send.")
                 }
             });
-        console.log(JSON.stringify(this.state))
+        // console.log(JSON.stringify(this.state))
     }
     resetForm() {
         this.setState({ name: '', email: '', message: '' })
