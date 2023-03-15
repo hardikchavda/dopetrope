@@ -18,7 +18,7 @@ class Contact extends Component {
     handleSubmit(e) {
         e.preventDefault();
         fetch('https://hardikchavda.in/webservices/contact.php', {
-            mode: 'no-cors',
+            // mode: 'no-cors',
             method: "POST",
             // body: this.state,
             body: JSON.stringify(this.state),
