@@ -71,9 +71,10 @@ class Contact extends Component {
             <section id="main">
                 <div className="container">
 
-                    {/* <!-- Content --> */}
                     <article className="box post">
-                        <a href="#" className="image featured"><img src="images/pic01.jpg" alt="" /></a>
+                        <a href="#" className="image featured">
+                            <img src="images/pic01.jpg" alt="" />
+                        </a>
                         <header>
                             <h2>Contact</h2>
                             <p>Become one of us</p>
@@ -86,7 +87,7 @@ class Contact extends Component {
                             </div>
                             <div className="form-group">
                                 <label htmlFor="exampleInputEmail1">Email address</label>
-                                <input type="email" className="form-control" id="email" aria-describedby="emailHelp" value={email} onChange={this.email} />
+                                <input type="email" className="form-control" id="email" value={email} onChange={this.email} />
                             </div>
                             <div className="form-group">
                                 <label htmlFor="message">Message</label>
@@ -97,7 +98,7 @@ class Contact extends Component {
                         </form>
                     </article>
                 </div>
-            </section>
+            </section >
         )
     }
 }

@@ -12,7 +12,7 @@ class PostPortComponent extends Component {
                     <p>{this.props.description}</p>
                     <footer>
                         <ul className="actions">
-                            <li><a href="#" className="button alt">Find out more</a></li>
+                            <li><a href={this.props.link} className="button alt">Find out more</a></li>
                         </ul>
                     </footer>
                 </section>
