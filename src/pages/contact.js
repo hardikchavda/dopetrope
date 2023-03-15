@@ -24,10 +24,11 @@ class Contact extends Component {
             body: JSON.stringify(this.state),
             headers: {
                 'Accept': 'application/json',
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*'
             },
         })
-            .then((response) => response.json())
+            // .then((response) => response.json())
             .then((response) => {
                 console.log(response)
                 if (response.status === '1') {
@@ -37,7 +38,7 @@ class Contact extends Component {
                     console.log("Message failed to send.")
                 }
             });
-        // console.log(this.state)
+        console.log(JSON.stringify(this.state))
     }
     resetForm() {
         this.setState({ name: '', email: '', message: '' })
