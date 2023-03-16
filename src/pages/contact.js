@@ -16,41 +16,19 @@ class Contact extends Component {
         this.name = this.onNameChange.bind(this)
         this.email = this.onEmailChange.bind(this)
         this.message = this.onMessageChange.bind(this)
-
     }
     handleSubmit(e) {
         e.preventDefault()
         axios.post('https://hardikchavda.in/webservices/contact.php', JSON.stringify(this.state))
             .then(res => {
-                // console.log(res.data.status);
-                if (res.data.status == "empty") {
-                    // console.log("One or More field is empty.");
+                if (res.data.status === "empty") {
                     this.setState({ res_message: <h4 style={{ color: "red" }}>One or More field is empty.</h4> });
-                } else if (res.data.status == "success") {
+                } else if (res.data.status === "success") {
                     this.setState({ res_message: <h4 style={{ color: "green" }}>Data Submitted Successfully.</h4> });
-                } else if (res.data.status == "fail") {
+                } else if (res.data.status === "fail") {
                     this.setState({ res_message: <h4 style={{ color: "red" }}>Data has some errors.</h4> });
                 }
-            })
-        // fetch('https://hardikchavda.in/webservices/contact.php', {            
-        //     method: 'POST',
-        //     body: JSON.stringify(this.state),
-        //     headers: {
-        //         'Accept': 'application/json',
-        //         'Content-Type': 'application/json',
-        //     },
-        // })
-        //     .then((response) => response.json())
-        //     .then((response) => {
-        //         console.log(response)
-        //         if (response.status === '1') {
-        //             console.log("Message Sent.")
-        //             this.resetForm()
-        //         } else if (response.status === '0') {
-        //             console.log("Message failed to send.")
-        //         }
-        //     });
-        // console.log(JSON.stringify(this.state))
+            })     
     }
     resetForm() {
         this.setState({ name: '', email: '', message: '' })
@@ -72,7 +50,7 @@ class Contact extends Component {
                 <div className="container">
 
                     <article className="box post">
-                        <a href="#" className="image featured">
+                        <a href="/" className="image featured">
                             <img src="images/pic01.jpg" alt="" />
                         </a>
                         <header>
