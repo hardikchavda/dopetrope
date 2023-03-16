@@ -5,7 +5,7 @@ class PostPortComponent extends Component {
         return (
             <div className="col-4 col-6-medium col-12-small">
                 <section className="box">
-                    <a href="#" className="image featured"><img src={this.props.image} alt="" /></a>
+                    <a href={this.props.link} className="image featured"><img src={this.props.image} alt="" /></a>
                     <header>
                         <h3>{this.props.title}</h3>
                     </header>
