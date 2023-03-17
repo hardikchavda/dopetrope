@@ -22,10 +22,10 @@ class Portfolio extends Component {
         const postItems = this.state.posts.map(post => (
             <PostPortComponent
                 key={post.id}
+                id={post.id}
                 title={post.title.rendered}
-                image={post && post._embed && post._embed['wp:featuredmedia'] ? post._embed['wp:featuredmedia'][0].source_url :post._embedded["wp:featuredmedia"][0].media_details.sizes.full.source_url}
-                description={post._embedded['wp:term'][0][0].name}
-                link={post.link}
+                image={post && post._embed && post._embed['wp:featuredmedia'] ? post._embed['wp:featuredmedia'][0].source_url : post._embedded["wp:featuredmedia"][0].media_details.sizes.full.source_url}
+                category={post._embedded['wp:term'][0][0].name}
             />
         ));
         return (
