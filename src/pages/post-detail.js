@@ -14,7 +14,6 @@ class PostDetail extends Component {
     }
 
     componentDidUpdate() {
-        this._onProgress()
         window.scrollTo(0, 0)
     }
     render() {
@@ -33,7 +32,6 @@ class PostDetail extends Component {
 
         )
     }
-    _onProgress = () => <img src="https://media.emailonacid.com/wp-content/uploads/2019/03/2019-GifsInEmail.gif" alt=""/>
 }
 
 function withParams(Component) {
