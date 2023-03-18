@@ -1,5 +1,5 @@
 import { Component } from "react";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 class PostPortComponent extends Component {
     render() {
@@ -13,8 +13,7 @@ class PostPortComponent extends Component {
                     <p>{this.props.category}</p>
                     <footer>
                         <ul className="actions">
-                            {/* <li><a href={this.props.link} className="button alt">Find out more</a></li> */}
-                            <li><NavLink to={`/postdetail/${this.props.id}`} className="button alt">Know More</NavLink></li>
+                            <li><Link to={`/postdetail/${this.props.id}`} className="button alt">Know More</Link></li>
                         </ul>
                     </footer>
                 </section>

@@ -9,10 +9,7 @@ class Portfolio extends Component {
     };
 
     async componentDidMount() {
-        // fetch("https://jsonplaceholder.typicode.com/posts?_page=1")
-        //     .then(res => res.json())
-        //     .then(data => this.setState({ posts: data }));
-
+        window.scrollTo(0, 0)
         await axios.get('https://hardikchavda.in/wp-json/wp/v2/posts?per_page=9&_embed')
             // .then(res => res.data)
             .then(data => this.setState({ posts: data.data }))
