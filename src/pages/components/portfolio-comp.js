@@ -8,11 +8,15 @@ class Portfolio extends Component {
         posts: []
     };
 
-    async componentDidMount() {
-        window.scrollTo(0, 0)
-        await axios.get('https://hardikchavda.in/wp-json/wp/v2/posts?per_page=9&_embed')
+    componentDidMount() {        
+        axios.get('https://hardikchavda.in/wp-json/wp/v2/posts?per_page=9&_embed')
             // .then(res => res.data)
             .then(data => this.setState({ posts: data.data }))
+    }
+
+    componentDidUpdate(){
+        window.scrollTo(0, 0)
+
     }
 
     render() {

@@ -9,9 +9,13 @@ class PostDetail extends Component {
     };
     componentDidMount() {
         let { id } = this.props.params;
-        window.scrollTo(0, 0)
         axios.get(`https://hardikchavda.in/wp-json/wp/v2/posts/${id}?&_embed`)
             .then(data => this.setState({ posts: data.data }))
+    }
+
+    componentDidUpdate() {
+        this._onProgress()
+        window.scrollTo(0, 0)
     }
     render() {
         const postItems = <PostDetailComponent
@@ -29,6 +33,7 @@ class PostDetail extends Component {
 
         )
     }
+    _onProgress = () => <img src="https://media.emailonacid.com/wp-content/uploads/2019/03/2019-GifsInEmail.gif" alt=""/>
 }
 
 function withParams(Component) {
