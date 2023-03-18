@@ -17,13 +17,13 @@ class PostDetail extends Component {
         window.scrollTo(0, 0)
     }
     render() {
+        const post = this.state.posts
         const postItems = <PostDetailComponent
-            title={this.state.posts.title ? this.state.posts.title.rendered : 'Loading...'}
-            description={this.state.posts.content ? this.state.posts.content.rendered : 'Loading'}
-            image={this.state.posts && this.state.posts._embedded && this.state.posts._embedded['wp:featuredmedia'] ? this.state.posts._embedded['wp:featuredmedia'][0].source_url : ''}
-            category={this.state.posts && this.state.posts._embedded && this.state.posts._embedded['wp:term'] ? this.state.posts._embedded['wp:term'][0][0].name : ""}
+            title={post.title ? post.title.rendered : 'Loading...'}
+            description={post.content ? post.content.rendered : 'Loading'}
+            image={post && post._embedded && post._embedded['wp:featuredmedia'] ? post._embedded['wp:featuredmedia'][0].source_url : ''}
+            category={post && post._embedded && post._embedded['wp:term'] ? post._embedded['wp:term'][0][0].name : ""}
         />
-        // console.log(this.state.posts._embedded);
         return (
 
             <section id="main" >
