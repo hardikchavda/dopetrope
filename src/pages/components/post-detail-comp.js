@@ -1,7 +1,8 @@
 import { Component } from "react";
 
 class PostDetailComponent extends Component {
-    render() {
+    render() {        
+        console.log("Detail");
         const regex = /(<([^>]+)>)/ig;
         return (
             <div className="container">

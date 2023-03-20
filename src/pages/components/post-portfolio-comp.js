@@ -2,8 +2,9 @@ import { Component } from "react";
 import { Link } from "react-router-dom";
 
 class PostPortComponent extends Component {
-    render() {
-        return (
+    render() {   
+        console.log("Portfolio");            
+        return (            
             <div className="col-4 col-6-medium col-12-small">
                 <section className="box">
                     <a href={this.props.id} className="image featured"><img src={this.props.image} alt="" /></a>
